@@ -1,6 +1,7 @@
 require('dotenv').config()
 
 const express = require('express')
+const compression = require('compression')
 const mongoose = require('mongoose')
 const workoutRoutes = require('./routes/workout')
 const userRoutes = require('./routes/user')
@@ -15,6 +16,8 @@ app.use((req, res, next) => {
     console.log(req.path, req.method)
     next()
 })
+
+app.use(compression());
 
 // routes
 app.use('/api/workouts', workoutRoutes)
