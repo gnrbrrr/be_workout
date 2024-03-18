@@ -5,6 +5,8 @@ const requireAuth = async (req, res, next) => {
     //verify user is authenticated
     const { authorization } = req.headers
 
+    res.set('Access-Control-Allow-Origin', '*')
+
     if (!authorization) {
         return res.status(401).json({ error: 'Authorization token required' })
     }
